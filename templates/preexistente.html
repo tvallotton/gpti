@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="py-10 px-20">
+    <form class="flex flex-col" method="post" data-autosave>
+        <h1 class="font-bold text-lg">Mail preexistente</h1>
+        <label for="mail-input">
+            Ingresa el mail en que quieres mejorar la redacción utilizando el método montoya.
+        </label>
+
+        <textarea id="mail-input" name="mail" class="rounded border h-32">{{mail}}
+        </textarea>
+
+        <div class="flex justify-center gap-2">
+            <label for="formalidad">Nivel de formalidad</label>
+
+
+            <select name="formalidad" id="formalidad"
+                    class="rounded-full p-1 px-2 bg-blue-600 text-white ">
+                <option>Casual</option>
+                <option>Formal</option>
+                <option>Super formal</option>
+                <option>Hyper super duper mega Formal</option>
+            </select>
+
+
+            <label for="extension">Extensión</label>
+
+            <select name="extension" id="formalidad" class="rounded-full p-1 px-2 bg-blue-600 text-white ">
+                <option>Breve</option>
+                <option>Medio</option>
+                <option>Largo</option>
+
+            </select>
+
+        </div>
+        <div>
+            <button class="rounded-full bg-yellow-400 p-2 mx-auto px-8">
+                Enviar
+            </button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Montoya mail generator</title>
+    <script src="/static/tailwind.js"></script>
+    <script src="/static/htmx.js"></script>
+    <script src="/static/form-autosave.js"></script>
+
+</head>
+
+<body hx-boost="true">
+
+    {% include "header.html" %}
+    <div class="my-auto">
+        {% block body %}{% endblock body %}
+    </div>
+
+    <div class="absolute bottom-0 w-full ">
+        {% include "footer.html" %}
+    </div>
+
+</body>
+
+</html>
+<html lang="en">
+
+</html>

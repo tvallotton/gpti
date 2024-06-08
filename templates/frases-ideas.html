@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block body %}
+<form data-autosave>
+
+    <div class="px-20 py-10">
+        <h1 class="text-xl font-bold mb-2">Frases - Ideas</h1>
+
+        <div class="mb-2 flex flex-col">
+            <div class="flex">
+                <label for="recipient" class="text-lg">Ingresa a quien va dirigido</label>
+                <p>*Puedes dar detalle del rol que ejerce o el grado en que conoces a esa persona</p>
+            </div>
+            <input name="recipient" id="recipient" class="rounded-full border-2 p-1">
+        </div>
+        <div class="mb-2 flex flex-col">
+            <div class="flex">
+                <label for="sender" class="text-lg">Ingresa quién está enviando el mail</label>
+                <p>*Puedes dar detalle de cómo se relaciona con el receptor del mensaje o algún antecedente importante
+                </p>
+            </div>
+            <input name="sender" id="sender" class="rounded-full border-2 p-1">
+        </div>
+
+        <div class="mb-2 flex flex-col">
+            <div class="flex">
+                <label for="name" class="text-lg">Ingresa qué se está solicitando</label>
+                <p>*Da detalles de la solicitud como nombres y especificaciones relevantes
+                </p>
+            </div>
+            <input name="name" id="sender" class="rounded-full border-2 p-1">
+        </div>
+
+        <div class="mb-2 flex flex-col">
+            <div class="flex">
+                <label for="context" class="text-lg">Ingresa contexto</label>
+                <p>*Da contexto de la solicitus o detalles especiales a considerar
+                </p>
+            </div>
+            <input name="context" id="sender" class="rounded-full border-2 p-1">
+        </div>
+    </div>
+</form>
+
+
+{% endblock body %}

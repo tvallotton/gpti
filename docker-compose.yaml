@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  mmg:
+    build:
+      context: .
+    container_name: mmg
+    command: ["fastapi", "run", "--reload", "--port", "8080"]
+    environment:
+      - PORT=8080
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/home/app

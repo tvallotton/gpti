@@ -1,0 +1,36 @@
+<header>
+    <nav class="bg-yellow-400 flex uppercase py-2">
+        <div class="text-xl flex ml-8">
+            <img src="/static/logo.png" class="w-8">
+            <a href="/">Montoya mail generator</a>
+        </div>
+        <ul id="header-links" class="flex justify-center underline  text-lg gap-20 mx-auto">
+
+            <a href="/">
+                <li data-path="/" id="inicio">
+                    Inicio
+                </li>
+            </a>
+            <a href="/preexistente">
+                <li data-path="/preexistente">
+                    Mail preexistente
+                </li>
+            </a>
+            <a href="/frases-ideas">
+                <li data-path="preexistente">
+                    Frases - Ideas
+                </li>
+            </a>
+
+
+        </ul>
+    </nav>
+</header>
+<script>
+    for (const el of document.querySelectorAll("#header-links a")) {
+        el.classList.remove("font-bold");
+    }
+    document.querySelector(
+        `#header-links a[href="${location.pathname}"]`
+    ).classList.add("font-bold");
+</script>
