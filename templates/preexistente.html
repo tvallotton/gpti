@@ -2,45 +2,63 @@
 {% block body %}
 
 <div class="py-10 px-20">
-    <form class="flex flex-col" method="post" data-autosave>
-        <h1 class="font-bold text-lg">Mail preexistente</h1>
+    <form
+          class="flex flex-col"
+          hx-ext="ws"
+          ws-connect="/response-stream"
+          ws-send
+
+          data-autosave>
+        <h1 class="font-bold mb-3 text-lg">Mail preexistente</h1>
         <label for="mail-input">
             Ingresa el mail en que quieres mejorar la redacción utilizando el método montoya.
         </label>
 
-        <textarea id="mail-input" name="mail" class="rounded border h-32">{{mail}}
-        </textarea>
 
-        <div class="flex justify-center gap-2">
+
+        <textarea id="mail-input" name="mail" class="rounded mb-3 border h-32"></textarea>
+
+        <div class="flex mb-3 gap-2">
             <label for="formalidad">Nivel de formalidad</label>
-
-
             <select name="formalidad" id="formalidad"
-                    class="rounded-full p-1 px-2 bg-blue-600 text-white ">
+                    class="rounded-full p-1 px-5 bg-blue-600 text-white ">
                 <option>Casual</option>
                 <option>Formal</option>
-                <option>Super formal</option>
-                <option>Hyper super duper mega Formal</option>
+
+
             </select>
-
-
             <label for="extension">Extensión</label>
 
-            <select name="extension" id="formalidad" class="rounded-full p-1 px-2 bg-blue-600 text-white ">
+            <select name="extension" id="extension" class="rounded-full p-1 px-5 bg-blue-600 text-white ">
                 <option>Breve</option>
                 <option>Medio</option>
                 <option>Largo</option>
 
             </select>
-
         </div>
-        <div>
-            <button class="rounded-full bg-yellow-400 p-2 mx-auto px-8">
+        <div class="mb-3">
+            <button class="rounded-full bg-yellow-400 p-2 mx-auto px-8"
+                    onclick="document.querySelectorAll('#response-content').forEach((e) => {e.innerHTML='';})">
                 Enviar
             </button>
         </div>
-
     </form>
+
+    <div>
+        <h1 class="font-bold mb-3 text-lg">Respuesta:</h1>
+    
+        <p id="response-content" class="whitespace-pre-wrap w-2/3 align-justify"></p>
+
+        <div id="spinner" class="htmx-indicator flex justify-center">
+            <div class="lds-dual-ring"></div>
+        </div>
+    </div>
 </div>
 
+<script>
+
+
+</script>
+
+<link rel="stylesheet" href="/static/spinner.css">
 {% endblock body %}

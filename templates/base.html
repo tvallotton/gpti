@@ -8,18 +8,21 @@
     <script src="/static/tailwind.js"></script>
     <script src="/static/htmx.js"></script>
     <script src="/static/form-autosave.js"></script>
+    <script src="/static/json-enc.js"></script>
+    <script src="/static/ws.js"></script>
 
 </head>
 
 <body hx-boost="true">
+    <div class="relative" style="min-height: 100vh;">
+        {% include "header.html" %}
+        <div class="my-auto">
+            {% block body %}{% endblock body %}
+        </div>
 
-    {% include "header.html" %}
-    <div class="my-auto">
-        {% block body %}{% endblock body %}
-    </div>
-
-    <div class="absolute bottom-0 w-full ">
-        {% include "footer.html" %}
+        <div class="absolute bottom-0 w-full ">
+            {% include "footer.html" %}
+        </div>
     </div>
 
 </body>
