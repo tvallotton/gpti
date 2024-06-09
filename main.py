@@ -62,7 +62,7 @@ async def get_frases_ideas(r: Request):
 
 @app.websocket("/response-stream")
 async def websocket_endpoint(websocket: WebSocket):
-    segment = templates.get_template("segment.html")
+    segment_template = templates.get_template("segment.html")
 
     await websocket.accept()
     data = json.loads(await websocket.receive_text())
@@ -75,9 +75,9 @@ async def websocket_endpoint(websocket: WebSocket):
         stream=True,
     )
 
-    for chunk in stream:
+    async for chunk in stream:
         print("chunk", chunk)
         segment = chunk.choices[0].delta.content
         print("segment", segment)
         if segment is not None:
-            await websocket.send_text(segment.render({"segment": segment }))
+            await websocket.send_text(segment_template.render({"segment": segment }))
