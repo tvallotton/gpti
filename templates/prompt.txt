@@ -6,6 +6,7 @@ La estructura debe incluir un saludo, presentación, exposición del caso, y req
 El siguiente es un ejemplo del problema a resolver.
 
 Nivel de formalidad requerida: Formal
+Despedida: {{ despedida }} (Si es que el usuario la especifica)
 Extensión: Breve
 Correo a mejorar:
 Estimado profesor,
@@ -28,19 +29,20 @@ Juan Montoya
 Ahora tienes que responder tu.
 Nivel de formalidad requerida: {{ formalidad }} 
 Extensión: {{ extension }} 
+Despedida: {{ despedida }}
 Correo a mejorar: {{ mail }}
-
 
 {% else %}
 El siguiente es un ejemplo del problema a resolver. Estos son los parametros:
 
-Extensión: Breve
+
 A quién va dirigido:  Profesor Ramón fuentes
 Quién está enviando el correo: Juan Montoya
 Qué se está solicitando: Cambiar la fecha de la tarea 2
 Contexto adicional: No he tenido tiempo para estudiar
 Formalidad: Formal  (puede ser formal o casual)
 Extensión: Breve (puede ser breve, medio, o largo)
+Despedida: Saludos (Si es que el usuario la especifica)
 
 Solución: 
 
@@ -54,13 +56,14 @@ Juan Montoya
 
 Ahora tienes que resolver el siguiente tu.
 
-Extensión: {{extension}}
+
 A quién va dirigido:  {{receptor}}
 Quién está enviando el correo: {{emisor}}
 Qué se está solicitando: {{solicitud}}
 Contexto adicional: {{contexto}}
 Formalidad: {{ formalidad }}
 Extensión: {{ extension }}
+Despedida: {{ despedida }}
 
 Solución: 
 {% endif %}
