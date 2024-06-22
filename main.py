@@ -18,24 +18,6 @@ templates = Jinja2Templates(directory="templates")
 
 
 
-
-
-class Preexistente(BaseModel):
-    mail: str
-    extension: str
-    formalidad: str
-
-
-class FrasesIdeas(BaseModel):    
-    extension: str
-    formalidad: str
-    receptor: str
-    emisor: str
-    solicitud: str
-    contexto: str
-    
-
-
 def render(path: str, request: Request, context={}):
     return templates.TemplateResponse(
         request=request, name=path, context=context
@@ -47,17 +29,20 @@ async def root(r: Request):
     return render("inicio.html", r)
 
 
-
 @app.get("/preexistente")
-async def get_preexistente(r: Request, mail: str = ""):
+def get_preexistente(r: Request, mail: str = ""):
     response = mail
-    return render("preexistente.html", r, { "response": response})
+    return render("preexistente.html", r, { "mail": mail})
 
 
 @app.get("/frases-ideas")
-async def get_frases_ideas(r: Request):
+def get_frases_ideas(r: Request):
     return render("frases-ideas.html", r)
 
+
+@app.get("/plantillas")
+def plantillas(r: Request): 
+    return render("plantillas.html", r)
 
 
 @app.websocket("/response-stream")
