@@ -43,19 +43,21 @@ async def websocket_endpoint(websocket: WebSocket):
     segment_template = templates.get_template("segment.html")
 
     await websocket.accept()
-    data = json.loads(await websocket.receive_text())
-    prompt = templates.get_template("prompt.txt").render(data)
-    
-    stream = await client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "user", "content": prompt}],
-        stream=True,
-    )
 
-    async for chunk in stream:
-        print("chunk", chunk)
-        segment = chunk.choices[0].delta.content
-        print("segment", segment)
-        if segment is not None:
-            await websocket.send_text(segment_template.render({"segment": segment }))
+    while True:
+        data = json.loads(await websocket.receive_text())
+        prompt = templates.get_template("prompt.txt").render(data)
+        
+        stream = await client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": prompt}],
+            stream=True,
+        )
+
+        async for chunk in stream:
+            print("chunk", chunk)
+            segment = chunk.choices[0].delta.content
+            print("segment", segment)
+            if segment is not None:
+                await websocket.send_text(segment_template.render({"segment": segment }))
