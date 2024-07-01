@@ -2,13 +2,8 @@ from fastapi import FastAPI, Request, Form, Depends, WebSocket
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
-from typing import Annotated
-from dataclasses import dataclass
 from openai import AsyncOpenAI
 import json
-
-
 
 
 client = AsyncOpenAI()
@@ -17,12 +12,10 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
-
 def render(path: str, request: Request, context={}):
     return templates.TemplateResponse(
         request=request, name=path, context=context
     )
-
 
 @app.get("/")
 async def root(r: Request):
